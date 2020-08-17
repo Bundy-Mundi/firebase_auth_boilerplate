@@ -1,0 +1,12 @@
+#loginBtn{
+  height: 2rem;
+  width: 20rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+}
+#loginBtn:hover{
+  background-color: gray;
+  color: white;
+}
+

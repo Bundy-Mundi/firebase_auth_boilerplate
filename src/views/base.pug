@@ -1,0 +1,25 @@
+html
+  head
+    title My Site - #{title}
+    style
+      include ../public/styles/reset.css
+      include ../public/styles/global.css
+      include ../public/styles/login.css
+      include ../public/styles/signup.css
+      include ../public/styles/header.css
+
+  body
+    block header
+      include layouts/header.pug
+    block content
+    block footer
+      include layouts/footer.pug
+    <script defer src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+    <script defer src="/static/js/initFirebase.js"></script>
+    <script defer src="/static/js/auth.js"></script>
+    block script
+    
+</body>
+</html>

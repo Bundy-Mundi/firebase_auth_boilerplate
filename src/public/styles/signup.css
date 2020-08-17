@@ -1,0 +1,14 @@
+#signupBtn{
+  height: 2rem;
+  width: 20rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+#signupBtn:hover{
+  background-color: gray;
+  color: whitesmoke;
+  border: 1px solid gray;
+}

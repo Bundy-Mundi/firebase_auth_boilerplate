@@ -1,0 +1,13 @@
+extends ../base.pug
+
+block content
+  h1 Sign Up
+  .form-container
+    form#signupForm._form
+      input#signup_email._input(type="email" placeholder="Email")
+      input#signup_username._input(type="text" placeholder="Username")
+      input#signup_firstname._input(type="text" placeholder="First Name")
+      input#signup_lastname._input(type="text" placeholder="Last Name")
+      input#signup_password._input(type="password" placeholder="Password")
+      input#signup_v_password._input(type="password" placeholder="Validate Password")
+      button#signupBtn(type="submit") Sign Up

@@ -1,0 +1,9 @@
+extends ../base.pug
+
+block content
+  h1 LOGIN
+  .form-container
+    form#loginForm._form(action="" method="post")
+      input#login_email._input(type="email" placeholder="Email")
+      input#login_password._input(type="password" placeholder="Password")
+      button#loginBtn Login
