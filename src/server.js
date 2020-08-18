@@ -1,10 +1,10 @@
-const admin = require("firebase-admin");
+const admin  = require("firebase-admin");
 const serviceAccount = require("../serviceAccountKey.json");
 const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const path = require('path');
-const apiRouter = require("./routes/apiRouter");
+
 require('dotenv').config();
 
 const ENV = process.env;
@@ -25,20 +25,22 @@ app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+
 // Routes
 app.get("/", (req, res)=>{
   res.render("pages/home", { title:"Home" });
 });
 app.get("/login", (req, res)=>{
-  res.render("pages/login", { title:"Login" });
+  res.render("pages/login", { title:"Login", user: req.body});
 });
 app.get("/signup", (req, res)=>{
-  res.render("pages/signup", { title:"Sign Up", id: req.params.id });
+  res.render("pages/signup", { title:"Sign Up", id: req.params.id});
 });
 app.get("/profile/:id", (req, res)=>{
   res.render("pages/profile", { title:"Profile", id: req.params.id });
 });
+app.post("/api/auth", (req, res) => {
+  console.log(req.body)
+}) 
 
-// API
-app.use("/api", apiRouter);
 app.listen(PORT, () => console.log(`Server Listening On: http://localhost:${PORT}`))

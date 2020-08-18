@@ -1,8 +1,25 @@
+auth.onAuthStateChanged(user => {
+  if(user){
+    console.log(user.dc)
+    fetchPost("/api/auth", user)
+      .then(res => console.log(res.status))
+      .catch(err => console.log(err))
+    console.log("User Logged In", user);
+  }else{
+    fetchPost("/api/auth", user)
+      .then(res => console.log(res.status))
+      .catch(err => console.log(err))
+    console.log("User Logged Out")
+  }
+})
+
 const loginForm = document.getElementById("loginForm");
 const loginBtn = document.getElementById("loginBtn");
 
 const signupForm = document.getElementById("signupForm");
 const signupBtn = document.getElementById("signupBtn");
+
+const logoutBtn = document.getElementById("logoutBtn");
 
 if(signupForm){
   signupForm.addEventListener("submit", e => {
@@ -24,20 +41,8 @@ if(signupForm){
       lastname,
       password
     }
-
-    fetch("/api/auth/signup", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-      .then(res => {
-        console.log(res.json())
-        return res.json()
-      })
-      .catch(err => console.log(err))
-  });
+    auth.createUser(data)
+  })
 }
 
 if(loginForm) {
@@ -47,17 +52,22 @@ if(loginForm) {
     const email = loginForm["login_email"].value;
     const password = loginForm["login_password"].value;
 
-    const data = { email, password }
-
-    fetch("/api/auth/login", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json'
-      }})
-      .then(token => {
-        console.log(token)
-      })
+    auth.signInWithEmailAndPassword(email, password)
+      .then(cred => cred)
       .catch(err => console.log(err))
   })
+}
+
+if(logoutBtn){
+  function handleClick(e) {
+    e.preventDefault();
+    auth.signOut()
+      .then(()=>{
+        console.log("LOGGED OUT")
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+  logoutBtn.addEventListener("click", e => handleClick(e))
 }
