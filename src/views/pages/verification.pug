@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    style
+      include ../../public/styles/reset.css
+      include ../../public/styles/global.css
+    title Email Verification
+  body
+    .content(style="display:grid; place-items: center; height: 50vh;")
+      h2(style="font-size:25px;") Please Verify Your Email
+      h1(style="font-size:35px;") #{email}
+      a(href="/") Go back to home

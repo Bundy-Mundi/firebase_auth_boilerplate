@@ -1,5 +1,3 @@
-const admin  = require("firebase-admin");
-const serviceAccount = require("../serviceAccountKey.json");
 const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -7,14 +5,8 @@ const path = require('path');
 
 require('dotenv').config();
 
-const ENV = process.env;
 const PORT = 4000;
 const app = express();
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: ENV.FIREBASE_DATABASE_URL
-});
 
 // Express Config
 app.set('views', `${__dirname}/views`)
@@ -38,8 +30,8 @@ app.get("/signup", (req, res)=>{
 app.get("/profile/:id", (req, res)=>{
   res.render("pages/profile", { title:"Profile", id: req.params.id });
 });
-app.post("/api/auth", (req, res) => {
-  res.cookie("email", req.body.user.email);
+app.get("/auth/verification", (req, res) => {
+  res.render("pages/verification", { email: req.query.email });
 });
 
 app.listen(PORT, () => console.log(`Server Listening On: http://localhost:${PORT}`))
