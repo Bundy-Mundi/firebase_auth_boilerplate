@@ -1,17 +1,15 @@
+const loggedIn = document.querySelectorAll("._loggedIn");
+const loggedOut = document.querySelectorAll("._loggedOut");
+
 auth.onAuthStateChanged(user => {
   if(user){
-    console.log(user.dc)
-    fetchPost("/api/auth", user)
-      .then(res => console.log(res.status))
-      .catch(err => console.log(err))
-    console.log("User Logged In", user);
+    toggleUI("loggedIn", "flex");
+    console.log("User Logged In", { user });
   }else{
-    fetchPost("/api/auth", user)
-      .then(res => console.log(res.status))
-      .catch(err => console.log(err))
+    toggleUI("", "flex");
     console.log("User Logged Out")
   }
-})
+});
 
 const loginForm = document.getElementById("loginForm");
 const loginBtn = document.getElementById("loginBtn");
@@ -41,7 +39,11 @@ if(signupForm){
       lastname,
       password
     }
-    auth.createUser(data)
+    auth.createUserWithEmailAndPassword(email, password)
+      .catch(err => {
+        console.log(err.code)
+        console.log(err.message)
+      })
   })
 }
 

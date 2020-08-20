@@ -7,6 +7,15 @@ html
       include ../public/styles/login.css
       include ../public/styles/signup.css
       include ../public/styles/header.css
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <script defer src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+    <script defer src="/static/scripts/toggleUI.js"></script>
+    <script defer src="/static/scripts/fetchPost.js"></script>
+    <script defer src="/static/scripts/initFirebase.js"></script>
+    <script defer src="/static/scripts/authentication.js"></script>
 
   body
     block header
@@ -14,14 +23,6 @@ html
     block content
     block footer
       include layouts/footer.pug
-    <script defer src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
-    <script defer src="/static/js/fetchPost.js"></script>
-    <script defer src="/static/js/getCookie.js"></script>
-    <script defer src="/static/js/initFirebase.js"></script>
-    <script defer src="/static/js/authentication.js"></script>
     block script
-    
 </body>
 </html>

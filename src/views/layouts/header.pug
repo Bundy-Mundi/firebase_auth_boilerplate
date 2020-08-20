@@ -1,16 +1,15 @@
 header#header
   nav#nav
-    a(href="/")
+    a#header_logo(href="/")
       p Home
-    if user
-      ul#list
-        a(href="/profile")
-          li.list-item Profile
-        button#logoutBtn
-          li.list-item Logout
-    else  
-      ul#list
-        a(href="/signup")
-          li.list-item Sign Up
-        a(href="/login")
-          li.list-item Login
+    ul#list._loggedIn(style="display:none;")
+      li.list-item 
+        a(href="/profile") Profile
+      li.list-item
+        button#logoutBtn Logout
+
+    ul#list._loggedOut(style="display:none;")   
+      li.list-item 
+        a(href="/signup") Sign Up
+      li.list-item
+        a(href="/login") Login
